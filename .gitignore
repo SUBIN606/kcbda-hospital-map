@@ -5,6 +5,9 @@ build/
 !**/src/main/**/build/
 !**/src/test/**/build/
 
+### naver cloud platform key ###
+/src/main/resources/naver-cloud-key.yml
+
 ### STS ###
 .apt_generated
 .classpath
