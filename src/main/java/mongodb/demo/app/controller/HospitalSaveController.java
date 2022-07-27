@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+/** 신규 동물병원 등록 담당 컨트롤러 */
 @RequestMapping("/hospitals")
 @RestController
 public class HospitalSaveController {
@@ -24,13 +25,11 @@ public class HospitalSaveController {
         return service.saveHospital(hospital);
     }
 
+    /** 신규 동물병원 데이터를 저장 객체 */
     public static class HospitalSaveDto implements HospitalSaveRequest {
         private String name;
         private double x;
         private double y;
-
-        public HospitalSaveDto() {
-        }
 
         public HospitalSaveDto(String name, double x, double y) {
             this.name = name;
@@ -50,4 +49,5 @@ public class HospitalSaveController {
             return y;
         }
     }
+
 }

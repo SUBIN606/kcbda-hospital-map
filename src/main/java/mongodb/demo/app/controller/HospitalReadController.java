@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.stream.Collectors;
 
+/** 동물병원 조회 담당 컨트롤러 */
 @CrossOrigin
 @RequestMapping("/hospitals")
 @RestController
@@ -27,10 +28,19 @@ public class HospitalReadController {
         this.service = service;
     }
 
+    /**
+     * 동물병원 목록을 조회 후 반환합니다.
+     * 좌표 값이 주어지면 거리에 상관 없이 모든 동물병원을 반환하고,
+     * 좌표 값이 주어지면 거리를 계산해 가까운 순서대로 반환합니다.
+     * @param x x좌표 (필수 x)
+     * @param y y좌표 (필수 x)
+     * @return 동물병원 목록
+     */
     @ResponseStatus(HttpStatus.OK)
     @GetMapping
     public List<HospitalResponse> hospitals(@RequestParam(name = "x", required = false) Double x,
                                             @RequestParam(name = "y", required = false) Double y) {
+
         if (x == null || y == null) {
             return service.hospitals()
                     .stream()
