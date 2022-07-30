@@ -1,11 +1,12 @@
 spring:
   config:
+    activate:
+      on-profile: local
     import: "classpath:naver-cloud-key.yml,classpath:mongodb-local.yml"
-  activate:
-    on-profile: local
+
 ---
 spring:
   config:
+    activate:
+      on-profile: test
     import: "classpath:naver-cloud-key.yml,classpath:mongodb-test.yml"
-  activate:
-    on-profile: test

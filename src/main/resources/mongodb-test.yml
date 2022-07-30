@@ -1,9 +1,8 @@
 spring:
   data:
     mongodb:
-      authentication-database: admin
       auto-index-creation: true
-      username: root
+      username: testUser
       password: password
       port: 27018
       database: test

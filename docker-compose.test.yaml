@@ -4,11 +4,11 @@ services:
     image: mongo
     container_name: 'test-mongodb'
     environment:
-      - MONGO_INITDB_DATABASE=test
       - MONGO_INITDB_ROOT_USERNAME=root
       - MONGO_INITDB_ROOT_PASSWORD=password
+      - MONGO_INITDB_DATABASE=test
     ports:
       - '27018:27017'
     volumes:
-      - ./mongodb-init/test-mongodb-init.js:/docker-entrypoint-initdb.d/init-mongo-js:ro
+      - ./docker-initdb/test-mongodb-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
