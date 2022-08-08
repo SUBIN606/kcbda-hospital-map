@@ -11,14 +11,14 @@ spring:
 spring:
   config:
     activate.on-profile: local
-    import: "classpath:naver-cloud-key.yml,classpath:mongodb-local.yml"
+    import: "classpath:naver-cloud-key.yml,classpath:database-local.yml"
 ---
 spring:
   config:
     activate.on-profile: test
-    import: "classpath:naver-cloud-key.yml,classpath:mongodb-test.yml"
+    import: "classpath:naver-cloud-key.yml,classpath:database-test.yml"
 ---
 spring:
   config:
     activate.on-profile: prod
-    import: "classpath:naver-cloud-key.yml,classpath:mongodb-prod.yml"
+    import: "classpath:naver-cloud-key.yml,classpath:database-prod.yml"
