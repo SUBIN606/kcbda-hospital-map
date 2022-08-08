@@ -1,6 +1,8 @@
 package mongodb.demo.app.controller;
 
 import mongodb.demo.app.domain.Hospital;
+import mongodb.demo.app.domain.HospitalDocument;
+import mongodb.demo.app.repository.HospitalMongoRepository;
 import mongodb.demo.app.repository.HospitalRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -21,11 +23,13 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 @ActiveProfiles("test")
 @SpringBootTest
 @MockMvcWithUtf8
-class HospitalReadControllerTest {
+class HospitalDocumentReadControllerTest {
 
     @Autowired
     private MockMvc mockMvc;
 
+    @Autowired
+    private HospitalMongoRepository mongoRepository;
     @Autowired
     private HospitalRepository repository;
 
@@ -34,14 +38,20 @@ class HospitalReadControllerTest {
     @BeforeEach
     void setUp() {
         cleanUp();
+        mongoRepository.saveAll(List.of(
+                HospitalDocument.of("24시 동탄 이음동물의료센터", 127.1019816, 37.1678562),
+                HospitalDocument.of("나인동물의료센터", 127.113226, 37.172993),
+                HospitalDocument.of("이로운 동물병원", 127.1185382, 37.1702334)));
         repository.saveAll(List.of(
-                Hospital.of("24시 동탄 이음동물의료센터", 127.1019816, 37.1678562),
-                Hospital.of("나인동물의료센터", 127.113226, 37.172993),
-                Hospital.of("이로운 동물병원", 127.1185382, 37.1702334)));
+                Hospital.ofName("24시 동탄 이음동물의료센터"),
+                Hospital.ofName("나인동물의료센터"),
+                Hospital.ofName("이로운 동물병원")
+        ));
     }
 
     @AfterEach
     void cleanUp() {
+        mongoRepository.deleteAll();
         repository.deleteAll();
     }
 
@@ -57,7 +67,8 @@ class HospitalReadControllerTest {
             @Test
             void it_response_all_hospitals() throws Exception {
                 mockMvc.perform(get(URL))
-                        .andExpect(status().isOk());
+                        .andExpect(status().isOk())
+                        .andDo(print());
             }
         }
 
