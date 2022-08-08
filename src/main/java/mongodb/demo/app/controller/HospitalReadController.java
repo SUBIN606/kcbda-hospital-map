@@ -2,6 +2,7 @@ package mongodb.demo.app.controller;
 
 import mongodb.demo.app.application.HospitalQueryService;
 import mongodb.demo.app.domain.Hospital;
+import mongodb.demo.app.domain.HospitalDocument;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.GeoResult;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
@@ -62,12 +63,18 @@ public class HospitalReadController {
         private Distance distance;
 
         public HospitalResponse(Hospital hospital) {
+            this.id = String.valueOf(hospital.getId());
+            this.name = hospital.getName();
+            this.location = null;
+        }
+
+        public HospitalResponse(HospitalDocument hospital) {
             this.id = hospital.getId();
             this.name = hospital.getName();
             this.location = hospital.getLocation();
         }
 
-        public HospitalResponse(GeoResult<Hospital> hospitalGeoResult) {
+        public HospitalResponse(GeoResult<HospitalDocument> hospitalGeoResult) {
             this.id = hospitalGeoResult.getContent().getId();
             this.name = hospitalGeoResult.getContent().getName();
             this.location = hospitalGeoResult.getContent().getLocation();
