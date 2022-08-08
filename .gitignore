@@ -7,6 +7,7 @@ build/
 
 ### naver cloud platform key ###
 /src/main/resources/naver-cloud-key.yml
+/src/main/resources/database-prod.yml
 
 ### STS ###
 .apt_generated
@@ -60,3 +61,4 @@ out/
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
