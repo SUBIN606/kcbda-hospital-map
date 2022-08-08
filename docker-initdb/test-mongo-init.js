@@ -10,7 +10,7 @@ db.createUser({
     roles: [
         {
             role: "readWrite",
-            database: "test"
+            db: "test"
         }
     ]
 })

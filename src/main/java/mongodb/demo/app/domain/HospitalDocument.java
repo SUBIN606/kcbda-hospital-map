@@ -6,8 +6,11 @@ import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
+import javax.persistence.Entity;
+
 
 /** 동물병원 */
+@Entity
 @Document
 public class Hospital {
 
