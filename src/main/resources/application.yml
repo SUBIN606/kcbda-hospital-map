@@ -1,12 +1,24 @@
 spring:
-  config:
-    activate:
-      on-profile: local
-    import: "classpath:naver-cloud-key.yml,classpath:mongodb-local.yml"
-
+  jpa:
+    # 콘솔에 쿼리 출력
+    show-sql: true
+    hibernate:
+      ddl-auto: update
+      # MySQL 문법 적용
+      dialect: org.hibernate.dialect.MySQL57Dialect
+      storage-engine: innodb
 ---
 spring:
   config:
-    activate:
-      on-profile: test
+    activate.on-profile: local
+    import: "classpath:naver-cloud-key.yml,classpath:mongodb-local.yml"
+---
+spring:
+  config:
+    activate.on-profile: test
     import: "classpath:naver-cloud-key.yml,classpath:mongodb-test.yml"
+---
+spring:
+  config:
+    activate.on-profile: prod
+    import: "classpath:naver-cloud-key.yml,classpath:mongodb-prod.yml"
