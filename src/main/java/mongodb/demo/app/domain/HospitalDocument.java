@@ -6,13 +6,10 @@ import org.springframework.data.mongodb.core.index.GeoSpatialIndexType;
 import org.springframework.data.mongodb.core.index.GeoSpatialIndexed;
 import org.springframework.data.mongodb.core.mapping.Document;
 
-import javax.persistence.Entity;
-
 
 /** 동물병원 */
-@Entity
 @Document
-public class Hospital {
+public class HospitalDocument {
 
     @Id
     private String id;
@@ -20,21 +17,21 @@ public class Hospital {
     @GeoSpatialIndexed(type = GeoSpatialIndexType.GEO_2DSPHERE)
     private GeoJsonPoint location;
 
-    protected Hospital() {
+    protected HospitalDocument() {
     }
 
-    public Hospital(String name, GeoJsonPoint coordinates) {
+    public HospitalDocument(String name, GeoJsonPoint coordinates) {
         this.name = name;
         this.location = coordinates;
     }
 
-    private Hospital(String name, double x, double y) {
+    private HospitalDocument(String name, double x, double y) {
         this.name = name;
         this.location = new GeoJsonPoint(x, y);
     }
 
-    public static Hospital of(String name, double x, double y) {
-        return new Hospital(name, x, y);
+    public static HospitalDocument of(String name, double x, double y) {
+        return new HospitalDocument(name, x, y);
     }
 
     public String getId() {
