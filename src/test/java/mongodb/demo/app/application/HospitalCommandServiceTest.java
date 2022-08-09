@@ -1,6 +1,7 @@
 package mongodb.demo.app.application;
 
-import mongodb.demo.app.domain.Hospital;
+import mongodb.demo.app.domain.HospitalDocument;
+import mongodb.demo.app.repository.HospitalMongoRepository;
 import mongodb.demo.app.repository.HospitalRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,7 +16,7 @@ import static org.assertj.core.api.Assertions.assertThat;
 @ActiveProfiles("test")
 @DisplayName("HospitalCommandService - 등록, 수정, 삭제")
 @SpringBootTest
-class HospitalCommandServiceTest {
+class HospitalDocumentCommandServiceTest {
 
     private final String HOSPITAL_NAME = "24시 동탄 이음동물의료센터";
     private final double HOSPITAL_LOC_X = 127.1019816;
@@ -24,16 +25,19 @@ class HospitalCommandServiceTest {
     private HospitalCommandService service;
 
     @Autowired
+    private HospitalMongoRepository mongoRepository;
+    @Autowired
     private HospitalRepository repository;
 
     @BeforeEach
     void setup() {
-        this.service = new HospitalCommandService(repository);
+        this.service = new HospitalCommandService(mongoRepository, repository);
         cleanup();
     }
 
     @AfterEach
     void cleanup() {
+        mongoRepository.deleteAll();
         repository.deleteAll();
     }
 
@@ -59,11 +63,11 @@ class HospitalCommandServiceTest {
     @DisplayName("병원 정보를 성공적으로 등록한다.")
     @Test
     void saveTest() {
-        Hospital savedHospital
+        HospitalDocument savedHospital
                 = service.saveHospital(getSaveRequest(HOSPITAL_NAME, HOSPITAL_LOC_X, HOSPITAL_LOC_Y));
 
-        assertThat(repository.findAll().size()).isEqualTo(1);
-        assertThat(repository.findById(savedHospital.getId())).isNotEmpty();
+        assertThat(mongoRepository.findAll().size()).isEqualTo(1);
+        assertThat(mongoRepository.findById(savedHospital.getId())).isNotEmpty();
     }
 
 }
