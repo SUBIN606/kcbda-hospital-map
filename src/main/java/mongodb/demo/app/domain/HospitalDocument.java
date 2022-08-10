@@ -8,7 +8,7 @@ import org.springframework.data.mongodb.core.mapping.Document;
 
 
 /** 동물병원 */
-@Document
+@Document("hospital")
 public class HospitalDocument {
 
     @Id
