@@ -47,7 +47,7 @@ class HospitalQueryServiceImplTest {
             void setUp() {
                 cleanUp();
                 mongoRepository.save(HospitalDocument.of("24시 동탄 이음동물의료센터", 127.1019816, 37.1678562));
-                repository.save(Hospital.ofName("이로운 동물병원"));
+                repository.save(Hospital.of("이로운 동물병원"));
             }
 
             @AfterEach

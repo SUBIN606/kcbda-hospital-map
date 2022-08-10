@@ -43,9 +43,9 @@ class HospitalDocumentReadControllerTest {
                 HospitalDocument.of("나인동물의료센터", 127.113226, 37.172993),
                 HospitalDocument.of("이로운 동물병원", 127.1185382, 37.1702334)));
         repository.saveAll(List.of(
-                Hospital.ofName("24시 동탄 이음동물의료센터"),
-                Hospital.ofName("나인동물의료센터"),
-                Hospital.ofName("이로운 동물병원")
+                Hospital.of("24시 동탄 이음동물의료센터"),
+                Hospital.of("나인동물의료센터"),
+                Hospital.of("이로운 동물병원")
         ));
     }
 
