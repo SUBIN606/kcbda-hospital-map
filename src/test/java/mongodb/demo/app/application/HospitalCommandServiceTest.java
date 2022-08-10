@@ -1,5 +1,6 @@
 package mongodb.demo.app.application;
 
+import mongodb.demo.app.domain.Hospital;
 import mongodb.demo.app.domain.HospitalDocument;
 import mongodb.demo.app.repository.HospitalMongoRepository;
 import mongodb.demo.app.repository.HospitalRepository;
@@ -12,11 +13,12 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
 
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertAll;
 
 @ActiveProfiles("test")
 @DisplayName("HospitalCommandService - 등록, 수정, 삭제")
 @SpringBootTest
-class HospitalDocumentCommandServiceTest {
+class HospitalCommandServiceTest {
 
     private final String HOSPITAL_NAME = "24시 동탄 이음동물의료센터";
     private final double HOSPITAL_LOC_X = 127.1019816;
@@ -63,11 +65,13 @@ class HospitalDocumentCommandServiceTest {
     @DisplayName("병원 정보를 성공적으로 등록한다.")
     @Test
     void saveTest() {
-        HospitalDocument savedHospital
+        Hospital savedHospital
                 = service.saveHospital(getSaveRequest(HOSPITAL_NAME, HOSPITAL_LOC_X, HOSPITAL_LOC_Y));
 
-        assertThat(mongoRepository.findAll().size()).isEqualTo(1);
-        assertThat(mongoRepository.findById(savedHospital.getId())).isNotEmpty();
+        assertAll(() -> {
+            assertThat(repository.findById(savedHospital.getId())).isNotEmpty();
+            assertThat(mongoRepository.findByName(HOSPITAL_NAME)).isNotNull();
+        });
     }
 
 }
