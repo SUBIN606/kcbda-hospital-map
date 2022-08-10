@@ -1,12 +1,12 @@
 package mongodb.demo.app.repository;
 
-import mongodb.demo.app.domain.Hospital;
+import mongodb.demo.app.domain.HospitalDocument;
 import org.springframework.data.geo.GeoResults;
 import org.springframework.data.geo.Point;
 
 
-public interface CustomHospitalRepository {
+public interface CustomHospitalMongoRepository {
 
-    GeoResults<Hospital> findByGeoNear(Point point);
+    GeoResults<HospitalDocument> findByGeoNear(Point point);
 
 }
