@@ -21,8 +21,8 @@ public class HospitalSaveController {
 
     /** 신규 동물병원 등록 */
     @PostMapping
-    public Hospital saveHospital(@RequestBody HospitalSaveDto hospital) {
-        return service.saveHospital(hospital);
+    public HospitalReadController.HospitalResponse saveHospital(@RequestBody HospitalSaveDto hospital) {
+        return new HospitalReadController.HospitalResponse(service.saveHospital(hospital));
     }
 
     /** 신규 동물병원 데이터를 저장 객체 */
@@ -37,14 +37,17 @@ public class HospitalSaveController {
             this.y = y;
         }
 
+        @Override
         public String getName() {
             return name;
         }
 
+        @Override
         public double getX() {
             return x;
         }
 
+        @Override
         public double getY() {
             return y;
         }
