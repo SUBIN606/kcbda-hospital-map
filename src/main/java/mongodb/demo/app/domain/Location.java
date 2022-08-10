@@ -5,8 +5,8 @@ import javax.persistence.Embeddable;
 @Embeddable
 public class Location {
 
-    private double x;
-    private double y;
+    private Double x;
+    private Double y;
 
     protected Location() {
     }
