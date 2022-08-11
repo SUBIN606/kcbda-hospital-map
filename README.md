@@ -34,3 +34,17 @@ $ docker run -d -p 27017:27017 \
     mongo
 ```
 도커 네트워크로 연결할 경우 `mongodb-[profile].yml`의 `spring.data.mongodb.host`값을 컨테이너 명으로 변경해야 합니다.
+
+## MariaDB설정
+배포 시 `spring.datasource.url`에 호스트명을 컨테이너 명으로 설정해야 합니다.
+``` bash
+$ docker run -d -p 3306:3306 \
+    -e MYSQL_ROOT_PASSWORD=[root 비밀번호] \
+    -e MYSQL_DATABASE=[데이터베이스명] \
+    -e MYSQL_USER=[db 유저] \
+    -e MYSQL_PASSWORD=[db 유저 비밀번호] \
+    -v [로컬 경로]:/var/lib/mysql \
+    --network [네트워크명] \
+    --name mariadb \
+    mariadb
+```
