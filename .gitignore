@@ -9,6 +9,10 @@ build/
 /src/main/resources/naver-cloud-key.yml
 /src/main/resources/database-prod.yml
 
+### docker mariadb ###
+/docker/mariadb
+/docker/mongodb/data
+
 ### STS ###
 .apt_generated
 .classpath
