@@ -1,7 +1,5 @@
 import { Typography, Box } from "@mui/material";
-import { Link } from "react-router-dom";
 import CommonResult from "../../components/CommonResult";
-import CustomButton from "../../components/CustomButton";
 import HospitalMap from "../../components/HospitalMap";
 
 function Impossible() {

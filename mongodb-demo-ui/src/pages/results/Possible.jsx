@@ -1,4 +1,4 @@
-import { Box, Divider, Typography } from "@mui/material";
+import { Box, Typography } from "@mui/material";
 import CommonResult from "../../components/CommonResult";
 import HospitalMap from "../../components/HospitalMap";
 
@@ -24,17 +24,13 @@ function Possible() {
       >
         🐶 헌혈견의 조건을 모두 충족하고 있어요! 🐶
       </Typography>
-      {/* <iframe
-        width="560"
-        height="315"
-        src="https://www.youtube.com/embed/mHHZGGrBT-8"
-        title="YouTube video player"
-        frameBorder="0"
-        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-        allowFullScreen
-      ></iframe> */}
-      <Typography sx={{ wordBreak: "keep-all" }}>
-        헌혈견이 되어 공혈견을 없애는 데 함께 하면 어떨까요?
+
+      <Typography
+        sx={{ wordBreak: "keep-all" }}
+        fontWeight={700}
+        textAlign="center"
+      >
+        헌혈견으로 등록하고 공혈견을 없애는 데 함께 하면 어떨까요?
       </Typography>
       <CommonResult />
 
