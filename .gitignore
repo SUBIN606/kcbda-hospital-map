@@ -45,15 +45,15 @@ out/
 .vscode/
 
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
+/mongodb-demo-ui/node_modules
+/mongodb-demo-ui/.pnp
+/mongodb-demo-ui/.pnp.js
 
 # testing
-/coverage
+/mongodb-demo-ui/coverage
 
 # production
-/build
+/mongodb-demo-ui/build
 
 # misc
 .DS_Store
