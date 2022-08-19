@@ -10,5 +10,5 @@ services:
     ports:
       - '27018:27017'
     volumes:
-      - test-mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
+      - ./test-mongo-init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
 
