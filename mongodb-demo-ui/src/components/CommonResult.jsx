@@ -1,4 +1,4 @@
-import { Typography, Box } from "@mui/material";
+import { Typography } from "@mui/material";
 import { Link } from "react-router-dom";
 import CustomButton from "./CustomButton";
 

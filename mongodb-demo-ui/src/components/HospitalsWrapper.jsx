@@ -4,6 +4,17 @@ import ListItemSecondaryAction from "@mui/material/ListItemSecondaryAction";
 import { IconButton, List, ListItemText } from "@mui/material";
 
 const HospitalItem = ({ hospital, selectedHospital, setSelectedHospital }) => {
+  function searchLocationOnNaverMap(searchKeyword) {
+    if (window.navigator.userAgent.indexOf("Mobi") === -1) {
+      window.open(
+        `https://map.naver.com/v5/search/${encodeURI(searchKeyword)}`,
+        "_blank"
+      );
+    } else {
+      window.location.href = `https://m.map.naver.com/search2/search.naver?query=${searchKeyword}`;
+    }
+  }
+
   return (
     <ListItemButton
       divider
@@ -12,14 +23,7 @@ const HospitalItem = ({ hospital, selectedHospital, setSelectedHospital }) => {
     >
       <ListItemSecondaryAction
         children={
-          <IconButton
-            onClick={() =>
-              window.open(
-                `https://map.naver.com/v5/search/${encodeURI(hospital.name)}`,
-                "_blank"
-              )
-            }
-          >
+          <IconButton onClick={() => searchLocationOnNaverMap(hospital.name)}>
             <TravelExploreIcon />
           </IconButton>
         }
