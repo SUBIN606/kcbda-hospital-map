@@ -24,7 +24,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/hospitals")
 @RestController
 public class HospitalReadController {
-    
+
     private final HospitalQueryService service;
 
     public HospitalReadController(HospitalQueryService service) {
