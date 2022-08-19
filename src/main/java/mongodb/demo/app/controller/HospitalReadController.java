@@ -3,6 +3,8 @@ package mongodb.demo.app.controller;
 import mongodb.demo.app.application.HospitalQueryService;
 import mongodb.demo.app.domain.Hospital;
 import mongodb.demo.app.domain.HospitalDocument;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.data.geo.Distance;
 import org.springframework.data.geo.GeoResult;
 import org.springframework.data.mongodb.core.geo.GeoJsonPoint;
@@ -22,7 +24,7 @@ import java.util.stream.Collectors;
 @RequestMapping("/hospitals")
 @RestController
 public class HospitalReadController {
-
+    
     private final HospitalQueryService service;
 
     public HospitalReadController(HospitalQueryService service) {
@@ -62,16 +64,13 @@ public class HospitalReadController {
         private GeoJsonPoint location;
         private Distance distance;
 
+        public HospitalResponse() {
+        }
+
         public HospitalResponse(Hospital hospital) {
             this.id = String.valueOf(hospital.getId());
             this.name = hospital.getName();
-            this.location = null;
-        }
-
-        public HospitalResponse(HospitalDocument hospital) {
-            this.id = hospital.getId();
-            this.name = hospital.getName();
-            this.location = hospital.getLocation();
+            this.location = new GeoJsonPoint(hospital.getLocation().getX(), hospital.getLocation().getY());
         }
 
         public HospitalResponse(GeoResult<HospitalDocument> hospitalGeoResult) {
