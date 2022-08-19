@@ -2,7 +2,6 @@ package mongodb.demo.app.controller;
 
 import mongodb.demo.app.application.HospitalCommandService;
 import mongodb.demo.app.application.HospitalSaveRequest;
-import mongodb.demo.app.domain.Hospital;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
